@@ -2,7 +2,9 @@ package day01;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 public class OrderService {
 
@@ -36,7 +38,10 @@ public class OrderService {
     }
 
     public boolean hasOrderWithNoMoreProductsThan(int max) {
-        return orders.stream()
-                .anyMatch(order -> order.getProducts().size() <= max);
+        return orders.stream().anyMatch(order -> order.getProducts().size() <= max);
+    }
+
+    public Optional<Order> getOrderWithMostProducts() {
+        return orders.stream().max((o1, o2) -> o1.getProducts().size() - o2.getProducts().size());
     }
 }

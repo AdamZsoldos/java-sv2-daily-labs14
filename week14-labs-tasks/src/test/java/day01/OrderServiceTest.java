@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -40,6 +41,7 @@ class OrderServiceTest {
         Order o4 = new Order("on delivery", LocalDate.of(2021, 6, 1));
         o4.addProduct(p3);
         o4.addProduct(p1);
+        o4.addProduct(p4);
         o4.addProduct(p2);
 
         Order o5 = new Order("pending", LocalDate.of(2021, 6, 7));
@@ -84,5 +86,12 @@ class OrderServiceTest {
     void testHasOrderWithNoMoreProductsThan() {
         assertTrue(orderService.hasOrderWithNoMoreProductsThan(3));
         assertFalse(orderService.hasOrderWithNoMoreProductsThan(2));
+    }
+
+    @Test
+    void testGetOrderWithMostProducts() {
+        Optional<Order> order = orderService.getOrderWithMostProducts();
+        assertTrue(order.isPresent());
+        assertSame(orderService.getOrders().get(3), order.get());
     }
 }
