@@ -30,4 +30,11 @@ public class OrderService {
                 .filter(order -> order.getStatus().equals(status))
                 .count();
     }
+
+    public List<Order> getOrdersByDate(LocalDate start, LocalDate end) {
+        return orders.stream()
+                .filter(order -> !order.getOrderDate().isBefore(start))
+                .filter(order -> !order.getOrderDate().isAfter(end))
+                .toList();
+    }
 }
