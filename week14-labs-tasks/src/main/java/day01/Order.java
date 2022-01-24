@@ -10,11 +10,9 @@ public class Order {
     private LocalDate orderDate;
     private List<Product> products = new ArrayList<>();
 
-
     public Order(String status, LocalDate orderDate) {
         this.status = status;
         this.orderDate = orderDate;
-
     }
 
     public void addProduct(Product product) {

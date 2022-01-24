@@ -11,11 +11,23 @@ public class OrderService {
 
     private List<Order> orders = new ArrayList<>();
 
+    public List<Order> getOrders() {
+        return orders;
+    }
 
     public void saveOrder(Order order) {
         orders.add(order);
     }
 
+    public List<Order> getOrdersByStatus(String status) {
+        return orders.stream()
+                .filter(order -> order.getStatus().equals(status))
+                .toList();
+    }
 
-
+    public long countOrdersByStatus(String status) {
+        return orders.stream()
+                .filter(order -> order.getStatus().equals(status))
+                .count();
+    }
 }

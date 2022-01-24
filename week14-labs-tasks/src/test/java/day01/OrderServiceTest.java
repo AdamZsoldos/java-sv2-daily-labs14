@@ -1,8 +1,10 @@
 package day01;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -52,4 +54,17 @@ class OrderServiceTest {
         orderService.saveOrder(o5);
     }
 
+    @Test
+    void testGetOrdersByStatus() {
+        assertEquals(
+                List.of(orderService.getOrders().get(1), orderService.getOrders().get(3)),
+                orderService.getOrdersByStatus("on delivery")
+        );
+    }
+
+    @Test
+    void testCountOrdersByStatus() {
+        assertEquals(3, orderService.countOrdersByStatus("pending"));
+        assertEquals(2, orderService.countOrdersByStatus("on delivery"));
+    }
 }
