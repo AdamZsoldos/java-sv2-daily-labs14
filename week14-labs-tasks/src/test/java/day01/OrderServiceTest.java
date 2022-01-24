@@ -72,7 +72,11 @@ class OrderServiceTest {
     void testGetOrdersByDate() {
         assertEquals(
                 List.of(orderService.getOrders().get(1), orderService.getOrders().get(3)),
-                orderService.getOrdersByDate(LocalDate.of(2021, 5, 10), LocalDate.of(2021, 6, 5))
+                orderService.getOrdersByDate(LocalDate.of(2021, 5, 10), LocalDate.of(2021, 6, 1))
+        );
+        assertEquals(
+                List.of(),
+                orderService.getOrdersByDate(LocalDate.of(2021, 5, 10), LocalDate.of(2021, 5, 31))
         );
     }
 }
