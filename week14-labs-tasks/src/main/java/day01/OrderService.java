@@ -35,7 +35,7 @@ public class OrderService {
                 .toList();
     }
 
-    public boolean containsOrderWithNumberOfProductsUnderLimit(int max) {
+    public boolean hasOrderWithNoMoreProductsThan(int max) {
         return orders.stream()
                 .anyMatch(order -> order.getProducts().size() <= max);
     }

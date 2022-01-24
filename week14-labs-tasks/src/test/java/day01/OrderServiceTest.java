@@ -81,8 +81,8 @@ class OrderServiceTest {
     }
 
     @Test
-    void testContainsOrderWithNumberOfProductsUnderLimit() {
-        assertTrue(orderService.containsOrderWithNumberOfProductsUnderLimit(3));
-        assertFalse(orderService.containsOrderWithNumberOfProductsUnderLimit(2));
+    void testHasOrderWithNoMoreProductsThan() {
+        assertTrue(orderService.hasOrderWithNoMoreProductsThan(3));
+        assertFalse(orderService.hasOrderWithNoMoreProductsThan(2));
     }
 }
