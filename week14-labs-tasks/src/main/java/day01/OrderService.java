@@ -42,6 +42,6 @@ public class OrderService {
     }
 
     public Optional<Order> getOrderWithMostProducts() {
-        return orders.stream().max((o1, o2) -> o1.getProducts().size() - o2.getProducts().size());
+        return orders.stream().max(Comparator.comparingInt(o -> o.getProducts().size()));
     }
 }
