@@ -34,4 +34,9 @@ public class OrderService {
                 .filter(order -> !order.getOrderDate().isAfter(end))
                 .toList();
     }
+
+    public boolean containsOrderWithNumberOfProductsUnderLimit(int max) {
+        return orders.stream()
+                .anyMatch(order -> order.getProducts().size() <= max);
+    }
 }

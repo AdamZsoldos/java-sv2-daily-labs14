@@ -79,4 +79,10 @@ class OrderServiceTest {
                 orderService.getOrdersByDate(LocalDate.of(2021, 5, 10), LocalDate.of(2021, 5, 31))
         );
     }
+
+    @Test
+    void testContainsOrderWithNumberOfProductsUnderLimit() {
+        assertTrue(orderService.containsOrderWithNumberOfProductsUnderLimit(3));
+        assertFalse(orderService.containsOrderWithNumberOfProductsUnderLimit(2));
+    }
 }
