@@ -45,4 +45,12 @@ public class OrderService {
                 .max(Comparator.comparingInt(o -> o.getProducts().size()))
                 .orElseThrow(() -> new IllegalStateException("Has no orders"));
     }
+
+    public List<Order> getOrdersWithProductCategory(String category) {
+        return orders.stream()
+                .filter(order -> order.getProducts().stream()
+                        .anyMatch(product -> product.getCategory().equals(category))
+                )
+                .toList();
+    }
 }

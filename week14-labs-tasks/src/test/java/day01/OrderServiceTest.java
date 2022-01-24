@@ -91,4 +91,12 @@ class OrderServiceTest {
     void testGetOrderWithMostProducts() {
         assertSame(orderService.getOrders().get(3), orderService.getOrderWithMostProducts());
     }
+
+    @Test
+    void testGetOrdersWithProductCategory() {
+        assertEquals(
+                List.of(orderService.getOrders().get(0), orderService.getOrders().get(2), orderService.getOrders().get(3), orderService.getOrders().get(4)),
+                orderService.getOrdersWithProductCategory("Book")
+        );
+    }
 }
