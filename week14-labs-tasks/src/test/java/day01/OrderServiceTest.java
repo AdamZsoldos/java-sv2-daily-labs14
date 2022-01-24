@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -90,8 +89,6 @@ class OrderServiceTest {
 
     @Test
     void testGetOrderWithMostProducts() {
-        Optional<Order> order = orderService.getOrderWithMostProducts();
-        assertTrue(order.isPresent());
-        assertSame(orderService.getOrders().get(3), order.get());
+        assertSame(orderService.getOrders().get(3), orderService.getOrderWithMostProducts());
     }
 }

@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 
 public class OrderService {
 
@@ -41,7 +40,9 @@ public class OrderService {
         return orders.stream().anyMatch(order -> order.getProducts().size() <= max);
     }
 
-    public Optional<Order> getOrderWithMostProducts() {
-        return orders.stream().max(Comparator.comparingInt(o -> o.getProducts().size()));
+    public Order getOrderWithMostProducts() {
+        return orders.stream()
+                .max(Comparator.comparingInt(o -> o.getProducts().size()))
+                .orElseThrow(() -> new IllegalStateException("Has no orders"));
     }
 }
