@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class OrderService {
 
-    private List<Order> orders = new ArrayList<>();
+    private final List<Order> orders = new ArrayList<>();
 
     public List<Order> getOrders() {
         return orders;
