@@ -24,6 +24,7 @@ class MovieServiceTest {
     @Test
     void testGetMoviesFeaturingActor() {
         assertEquals(List.of(m1, m3), movieService.getMoviesFeaturingActor("Kurt Russell"));
+        assertEquals(List.of(m2), movieService.getMoviesFeaturingActor("Jeff Goldblum"));
     }
 
     @Test
