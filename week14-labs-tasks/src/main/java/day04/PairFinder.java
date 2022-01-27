@@ -11,11 +11,7 @@ public class PairFinder {
     public static int countPairs(int... numbers) {
         Map<Integer, Integer> pairs = new TreeMap<>();
         for (int number : numbers) {
-            if (!pairs.containsKey(number)) {
-                pairs.put(number, 1);
-            } else {
-                pairs.put(number, pairs.get(number) + 1);
-            }
+            pairs.compute(number, (k, v) -> v == null ? 1 : v + 1);
         }
         return pairs.values().stream()
                 .mapToInt(i -> i / 2)
