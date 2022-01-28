@@ -49,7 +49,8 @@ public class StreetService {
     }
 
     private void addNextHouseNumber(List<Integer> houseNumbers, boolean even) {
-        houseNumbers.add(houseNumbers.stream()
+        houseNumbers.add(
+                houseNumbers.stream()
                 .filter(i -> (i % 2 == 0) == even)
                 .max(Comparator.naturalOrder())
                 .orElse(even ? 0 : -1) + 2
