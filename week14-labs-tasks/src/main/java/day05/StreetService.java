@@ -18,7 +18,7 @@ public class StreetService {
         return housesSold;
     }
 
-    public int getTotalSoldByStreetAndSide(String streetName, boolean evenSide) {
+    public int getTotalSoldByStreetNameAndSide(String streetName, boolean evenSide) {
         List<Integer> houses = housesSold.get(streetName);
         if (houses == null) throw new NoSuchElementException();
         return (int) houses.stream()

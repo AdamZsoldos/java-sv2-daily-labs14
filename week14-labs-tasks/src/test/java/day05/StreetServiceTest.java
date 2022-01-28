@@ -23,15 +23,15 @@ class StreetServiceTest {
     }
 
     @Test
-    void testGetTotalSoldByStreetAndSide() {
-        assertEquals(4, streetService.getTotalSoldByStreetAndSide("Kossuth", false));
-        assertEquals(2, streetService.getTotalSoldByStreetAndSide("Kossuth", true));
-        assertEquals(2, streetService.getTotalSoldByStreetAndSide("Petofi", false));
-        assertEquals(3, streetService.getTotalSoldByStreetAndSide("Petofi", true));
+    void testGetTotalSoldByStreetNameAndSide() {
+        assertEquals(4, streetService.getTotalSoldByStreetNameAndSide("Kossuth", false));
+        assertEquals(2, streetService.getTotalSoldByStreetNameAndSide("Kossuth", true));
+        assertEquals(2, streetService.getTotalSoldByStreetNameAndSide("Petofi", false));
+        assertEquals(3, streetService.getTotalSoldByStreetNameAndSide("Petofi", true));
     }
 
     @Test
-    void testGetTotalSoldByStreetAndSideInvalidStreetName() {
-        assertThrows(NoSuchElementException.class, () -> streetService.getTotalSoldByStreetAndSide("Kossuth_", false));
+    void testGetTotalSoldByStreetNameAndSideInvalidStreetName() {
+        assertThrows(NoSuchElementException.class, () -> streetService.getTotalSoldByStreetNameAndSide("Kossuth_", false));
     }
 }
