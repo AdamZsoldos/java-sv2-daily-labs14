@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,5 +28,10 @@ class StreetServiceTest {
         assertEquals(2, streetService.getTotalSoldByStreetAndSide("Kossuth", true));
         assertEquals(2, streetService.getTotalSoldByStreetAndSide("Petofi", false));
         assertEquals(3, streetService.getTotalSoldByStreetAndSide("Petofi", true));
+    }
+
+    @Test
+    void testGetTotalSoldByStreetAndSideInvalidStreetName() {
+        assertThrows(NoSuchElementException.class, () -> streetService.getTotalSoldByStreetAndSide("Kossuth_", false));
     }
 }
