@@ -40,10 +40,10 @@ public class StreetService {
         String[] fields = line.split(" ");
         String streetName = fields[0];
         boolean even = "0".equals(fields[1]);
-        addHouseSold(streetName, even);
+        addNextHouseSold(streetName, even);
     }
 
-    private void addHouseSold(String streetName, boolean even) {
+    private void addNextHouseSold(String streetName, boolean even) {
         List<Integer> houseNumbers = housesSold.computeIfAbsent(streetName, k -> new ArrayList<>());
         int houseNumber = houseNumbers.stream()
                 .filter(i -> (i % 2 == 0) == even)
