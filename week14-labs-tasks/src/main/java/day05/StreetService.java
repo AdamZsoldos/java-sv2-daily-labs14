@@ -44,11 +44,7 @@ public class StreetService {
     }
 
     private void addHouseSold(String streetName, boolean even) {
-        housesSold.putIfAbsent(streetName, new ArrayList<>());
-        addNextHouseNumber(housesSold.get(streetName), even);
-    }
-
-    private void addNextHouseNumber(List<Integer> houseNumbers, boolean even) {
+        List<Integer> houseNumbers = housesSold.computeIfAbsent(streetName, k -> new ArrayList<>());
         int houseNumber = houseNumbers.stream()
                 .filter(i -> (i % 2 == 0) == even)
                 .max(Comparator.naturalOrder())
